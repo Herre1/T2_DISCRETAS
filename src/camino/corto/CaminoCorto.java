@@ -1,14 +1,14 @@
 package camino.corto;
 
 import java.util.Scanner;
-
+import javax.swing.*;
 //QUEDO MUY CORTO XD NO SE QUE LE QUIERAN AÑADIR 
 //AGREGENLE UNA EXCEPTION POR SI EL DESTINO NO EXISTE
 
 public class CaminoCorto {
 
     public static void main(String[] args) {
-
+        JFrame jFrame = new JFrame();
         Scanner lector = new Scanner(System.in);
         String[] n = new String[20];
 
@@ -78,16 +78,15 @@ public class CaminoCorto {
         System.out.println("Esta es la lista de lugares disponibles : \n");
         for (int i = 0; i < n.length; i++) {
             System.out.println(i + " " + n[i]);
+            // Se imprime uno por uno jaja
+            // JOptionPane.showMessageDialog(jFrame, i + " " + n[i]);
         }
 
-        System.out.println("\nEscriba el origen:");
-        String inicio = lector.nextLine();
+        String origen = JOptionPane.showInputDialog(jFrame, "Escriba el origen:");
+        String fin = JOptionPane.showInputDialog(jFrame, "Escriba el destino:");
 
-        System.out.println("Escriba el destino: ");
-        String fin = lector.nextLine();
-
-        String respuesta = g.encontrarRutaMinimaDijkstra(inicio, fin);
-        System.out.println(respuesta);
+        String respuesta = g.encontrarRutaMinimaDijkstra(origen, fin);
+        JOptionPane.showMessageDialog(jFrame, respuesta);
     }
 
 }
