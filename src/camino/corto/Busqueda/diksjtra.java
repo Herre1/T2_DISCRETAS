@@ -74,7 +74,7 @@ public class diksjtra {
         String ruta = " ";
         // recorre la pila para armar la ruta en el orden correcto
         while (!pila.isEmpty()) {
-            ruta += (pila.pop().id + " Y ");
+            ruta += (pila.pop().id + " , ");
         }
         return "La distancia es: " + distancia + " Km y el camino a seguir es por " + ruta;
     }
