@@ -1,16 +1,9 @@
 package ui;
 
-import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.*;
-
 import Busqueda.diksjtra;
 import Busqueda.kruskal;
-import GrafosImplementacion.GenerarGrafos.GrafoNDP;
-import GrafosImplementacion.MetodosBusqueda.Kruskal;
-
-//QUEDO MUY CORTO XD NO SE QUE LE QUIERAN AÑADIR 
-//AGREGENLE UNA EXCEPTION POR SI EL DESTINO NO EXISTE
 
 public class Main {
 
@@ -19,24 +12,20 @@ public class Main {
         Scanner lector = new Scanner(System.in);
         String[] n = new String[51];
 
-        
-
-/*
- 		//IMPLEMENTACION DE KRUSKAL CON UN GRAFO GENERADO
-		try {
-        GrafoNDP grafoK = new GrafoNDP("grafo.in");
-        grafoK.coloreoSecuencial(10);
-		grafoK.coloreoWelshPowell(10);
-		grafoK.coloreoMatula(10);
-        Kruskal kruskal = new Kruskal(grafoK);
-        kruskal.ejecutar();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }		
- */
-
-
+        /*
+         * //IMPLEMENTACION DE KRUSKAL CON UN GRAFO GENERADO
+         * try {
+         * GrafoNDP grafoK = new GrafoNDP("grafo.in");
+         * grafoK.coloreoSecuencial(10);
+         * grafoK.coloreoWelshPowell(10);
+         * grafoK.coloreoMatula(10);
+         * Kruskal kruskal = new Kruskal(grafoK);
+         * kruskal.ejecutar();
+         * } catch (IOException e) {
+         * // TODO Auto-generated catch block
+         * e.printStackTrace();
+         * }
+         */
 
         n[0] = "Cafeteria Central";
         n[1] = "Cafeteria Snack";
@@ -172,60 +161,55 @@ public class Main {
 
             while (salir == false) {
                 String menu = JOptionPane.showInputDialog(jFrame,
-                        "Bienvenido A Nombre: \n 1. Insertar un punto y su arista  \n2. Buscar ruta minima \n3. Buscar ruta maxima \n4. Mostrar posibles caminos \n5.Salir");
+                        "Bienvenido A Nombre: \n 1. Insertar un punto y su arista  \n2. Buscar ruta minima \n3. Buscar ruta maxima \n4.Salir");
 
                 switch (menu) {
                     case "1":
-                        
+
                         System.out.println("Escriba el nombre del lugar");
                         String agregado = lector.nextLine();
 
-                        if (n.length<51){
-                        System.out.println("Error el mapa no puede tomar mas puntos");
+                        if (n.length < 51) {
+                            System.out.println("Error el mapa no puede tomar mas puntos");
                         } else {
-                        int i = n.length;
-                        n[i] = agregado;    
+                            int i = n.length;
+                            n[i] = agregado;
                         }
-                        
-                        String destinoAgregado = JOptionPane.showInputDialog("Escriba la conexion que tendra el lugar:");
-                        int pesoArista = Integer.parseInt(JOptionPane.showInputDialog("Escriba la distancia de la conexion:"));
+
+                        String destinoAgregado = JOptionPane
+                                .showInputDialog("Escriba la conexion que tendra el lugar:");
+                        int pesoArista = Integer
+                                .parseInt(JOptionPane.showInputDialog("Escriba la distancia de la conexion:"));
                         g.agregarRuta(agregado, destinoAgregado, pesoArista);
                         break;
 
                     case "2":
                         String origen = JOptionPane.showInputDialog("Escriba el origen:");
                         String fin = JOptionPane.showInputDialog("Escriba el destino:");
-                        
 
                         System.out.println(origen);
                         System.out.println(fin);
-                        String respuesta = g.encontrarRutaMinimaDijkstra(origen, fin);
+                        String respuesta = g.encontrarRutaMinimaDijkstra(origen + "", fin + "");
                         JOptionPane.showMessageDialog(jFrame, respuesta);
                         break;
 
                     case "3":
                         origen = JOptionPane.showInputDialog("Escriba el origen:");
-                        
+
                         fin = JOptionPane.showInputDialog("Escriba el destino:");
-                        
 
                         respuesta = g.encontrarRutaMaximaDijkstra(origen, fin);
                         JOptionPane.showMessageDialog(jFrame, respuesta);
                         break;
 
                     case "4":
-
-                        break;
-
-                    case "5":
-                        JOptionPane.showMessageDialog(jFrame, g, menu, 0);
                         salir = true;
                         break;
                     default:
                         break;
                 }
             }
-//PARA KRUSKAL SE USAN LOS NUMEROS , NO LOS NOMBRES
+            // PARA KRUSKAL SE USAN LOS NUMEROS , NO LOS NOMBRES
         } else if (metodo.equals("2")) {
 
             boolean salir = false;
@@ -254,22 +238,25 @@ public class Main {
                         break;
 
                     case "3":
-                        pesoArista = Integer.parseInt(JOptionPane.showInputDialog(jFrame, "Escriba la conexion a evaluar:"));
+                        pesoArista = Integer
+                                .parseInt(JOptionPane.showInputDialog(jFrame, "Escriba la conexion a evaluar:"));
                         Boolean respuesta = k.allconnect(pesoArista);
                         JOptionPane.showMessageDialog(jFrame, respuesta);
                         break;
 
                     case "4":
                         // Falta añadir por nombre no posicion
-                        int origen = Integer.parseInt(JOptionPane.showInputDialog(jFrame, "Escriba el origen de la conexion:"));
-                        int fin = Integer.parseInt(JOptionPane.showInputDialog(jFrame, "Escriba el destino de la conexion:"));
-                        pesoArista = Integer.parseInt(JOptionPane.showInputDialog(jFrame, "Escriba el peso de la conexion a evaluar:"));
+                        int origen = Integer
+                                .parseInt(JOptionPane.showInputDialog(jFrame, "Escriba el origen de la conexion:"));
+                        int fin = Integer
+                                .parseInt(JOptionPane.showInputDialog(jFrame, "Escriba el destino de la conexion:"));
+                        pesoArista = Integer.parseInt(
+                                JOptionPane.showInputDialog(jFrame, "Escriba el peso de la conexion a evaluar:"));
 
                         k.can_reach(origen, fin, pesoArista);
                         break;
 
                     case "5":
-                        JOptionPane.showMessageDialog(jFrame, g, menu, 0);
                         salir = true;
                         break;
                     default:
@@ -285,7 +272,5 @@ public class Main {
         // String fin = "Cafeteria Central";
 
     }
-
-    
 
 }
