@@ -3,7 +3,7 @@ package Busqueda;
 import java.io.*;
 import java.util.Arrays;
 
-public class kruskal {
+public class Kruskal {
 	public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	String[] nodos;
@@ -16,7 +16,7 @@ public class kruskal {
 	static int mincost = 0;
 	public int k, l, num_ed = 0;
 
-	public kruskal(int n, String[] serieNodos) {
+	public Kruskal(int n, String[] serieNodos) {
 		System.out.println(Arrays.toString(serieNodos));
 		nodos = serieNodos;
 

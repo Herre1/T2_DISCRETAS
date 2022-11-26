@@ -2,7 +2,7 @@ package T2_DISCRETAS.Test;
 
 import org.junit.Test;
 
-public class diksjtraTest {
+public class DiksjtraTest {
 
 
     @Test

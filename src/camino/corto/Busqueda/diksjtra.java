@@ -2,7 +2,7 @@ package Busqueda;
 
 import java.util.*;
 
-public class diksjtra {
+public class Diksjtra {
 
     String[] nodos; // Letras de identificación de nodo
     int[][] grafo; // Matriz de distancias entre nodos
@@ -13,7 +13,7 @@ public class diksjtra {
     List<Nodo> listos = null; // nodos revisados Dijkstra
 
     // construye el grafo con la serie de identificadores de nodo en una cadena
-    public diksjtra(String[] serieNodos) {
+    public Diksjtra(String[] serieNodos) {
         System.out.println(Arrays.toString(serieNodos));
         nodos = serieNodos;
 
@@ -186,15 +186,6 @@ public class diksjtra {
         return listos.contains(tmp);
     }
 
-    // encontrar la ruta mínima por fuerza bruta
-    public void encontrarRutaMinimaFuerzaBruta(String inicio, String fin) {
-        int p1 = posicionNodo(inicio);
-        int p2 = posicionNodo(fin);
-        // cola para almacenar cada ruta que está siendo evaluada
-        Stack<Integer> resultado = new Stack<Integer>();
-        resultado.push(p1);
-        recorrerRutas(p1, p2, resultado);
-    }
 
     // recorre recursivamente las rutas entre un nodo inicial y un nodo final
     // almacenando en una cola cada nodo visitado

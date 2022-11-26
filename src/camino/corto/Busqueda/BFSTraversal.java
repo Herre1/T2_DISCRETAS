@@ -1,6 +1,5 @@
 package Busqueda;
-
-import java.io.*;    
+  
 import java.util.*; 
    
 public class BFSTraversal    

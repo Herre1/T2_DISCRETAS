@@ -2,7 +2,7 @@ package T2_DISCRETAS.Test;
 
 import org.junit.Test;
 
-public class kruskalTest {
+public class KruskalTest {
     @Test
     public void testAgregarRutaKruskal() {
 

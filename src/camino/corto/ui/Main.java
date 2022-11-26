@@ -2,8 +2,8 @@ package ui;
 
 import java.util.Scanner;
 import javax.swing.*;
-import Busqueda.diksjtra;
-import Busqueda.kruskal;
+import Busqueda.Diksjtra;
+import Busqueda.Kruskal;
 
 public class Main {
 
@@ -79,8 +79,8 @@ public class Main {
         n[49] = "119G";
         n[50] = "120G";
 
-        diksjtra g = new diksjtra(n);
-        kruskal k = new kruskal(0, n);
+        Diksjtra g = new Diksjtra(n);
+        Kruskal k = new Kruskal(0, n);
 
         g.agregarRuta("Edificio A", "Cafeteria Central", 4);
         g.agregarRuta("Edificio A", "Auditorio Alfonso Borrero", 1);
@@ -161,7 +161,7 @@ public class Main {
 
             while (salir == false) {
                 String menu = JOptionPane.showInputDialog(jFrame,
-                        "Bienvenido A Nombre: \n 1. Insertar un punto y su arista  \n2. Buscar ruta minima \n3. Buscar ruta maxima \n4.Salir");
+                        "Bienvenido A LOTTO: \n 1. Insertar un punto y su arista  \n2. Buscar ruta minima \n3. Buscar ruta maxima \n4.Salir");
 
                 switch (menu) {
                     case "1":
