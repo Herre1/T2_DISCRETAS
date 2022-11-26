@@ -1,4 +1,4 @@
-package camino.corto;
+package Busqueda;
 
 import java.util.*;  
   

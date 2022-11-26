@@ -1,4 +1,4 @@
-package camino.corto;
+package Busqueda;
 
 public class Nodo implements Comparable<Nodo> {
 

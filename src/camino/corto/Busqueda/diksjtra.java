@@ -1,8 +1,8 @@
-package camino.corto;
+package Busqueda;
 
 import java.util.*;
 
-public class clsCaminocorto {
+public class diksjtra {
 
     String[] nodos; // Letras de identificación de nodo
     int[][] grafo; // Matriz de distancias entre nodos
@@ -13,7 +13,7 @@ public class clsCaminocorto {
     List<Nodo> listos = null; // nodos revisados Dijkstra
 
     // construye el grafo con la serie de identificadores de nodo en una cadena
-    clsCaminocorto(String[] serieNodos) {
+    public diksjtra(String[] serieNodos) {
         System.out.println(Arrays.toString(serieNodos));
         nodos = serieNodos;
 
@@ -60,8 +60,7 @@ public class clsCaminocorto {
         // recupera el nodo final de la lista de terminados
         Nodo tmp = new Nodo(fin);
         if (!listos.contains(tmp)) {
-            System.out.println("Error, Camino no alcanzable");
-            return "C";
+            return "Error, Camino no alcanzable";
         }
         tmp = listos.get(listos.indexOf(tmp));
         int distancia = tmp.distancia;
@@ -75,7 +74,7 @@ public class clsCaminocorto {
         String ruta = " ";
         // recorre la pila para armar la ruta en el orden correcto
         while (!pila.isEmpty()) {
-            ruta += (pila.pop().id + " ");
+            ruta += (pila.pop().id + " Y ");
         }
         return "La distancia es: " + distancia + " Km y el camino a seguir es por " + ruta;
     }
@@ -87,8 +86,7 @@ public class clsCaminocorto {
         // recupera el nodo final de la lista de terminados
         Nodo tmp = new Nodo(fin);
         if (!listos.contains(tmp)) {
-            System.out.println("Error, Camino no alcanzable");
-            return "Bye";
+            return "Error, Camino no alcanzable";
         }
         tmp = listos.get(listos.indexOf(tmp));
         int distancia = tmp.distancia;
@@ -102,7 +100,7 @@ public class clsCaminocorto {
         String ruta = " ";
         // recorre la pila para armar la ruta en el orden correcto
         while (!pila.isEmpty()) {
-            ruta += (pila.pop().id + " ");
+            ruta += (pila.pop().id + " Y ");
         }
         return "La distancia es: " + distancia + " Km y el camino a seguir es por " + ruta;
     }

@@ -1,17 +1,19 @@
-package camino.corto;
+package ui;
 
-import java.util.Scanner;
 import javax.swing.*;
+
+import Busqueda.diksjtra;
+import Busqueda.kruskal;
 
 //QUEDO MUY CORTO XD NO SE QUE LE QUIERAN AÑADIR 
 //AGREGENLE UNA EXCEPTION POR SI EL DESTINO NO EXISTE
 
-public class CaminoCorto {
+public class Main {
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
-        Scanner lector = new Scanner(System.in);
-        String[] n = new String[51];
+
+        String[] n = new String[60];
 
         n[0] = "Cafeteria Central";
         n[1] = "Cafeteria Snack";
@@ -65,7 +67,8 @@ public class CaminoCorto {
         n[49] = "119G";
         n[50] = "120G";
 
-        clsCaminocorto g = new clsCaminocorto(n);
+        diksjtra g = new diksjtra(n);
+        kruskal k = new kruskal(0, n);
 
         g.agregarRuta("Edificio A", "Cafeteria Central", 4);
         g.agregarRuta("Edificio A", "Auditorio Alfonso Borrero", 1);
@@ -137,15 +140,116 @@ public class CaminoCorto {
             // Se imprime uno por uno jaja
             // JOptionPane.showMessageDialog(jFrame, i + " " + n[i]);
         }
+        String metodo = JOptionPane.showInputDialog(jFrame,
+                "¿Que metodo de busqueda desea usar? \n1.Diksjtra  \n2.Kruskal");
 
-        String origen = JOptionPane.showInputDialog(jFrame, "Escriba el origen:");
-        String fin = JOptionPane.showInputDialog(jFrame, "Escriba el destino:");
+        if (metodo.equals("1")) {
+
+            boolean salir = false;
+
+            while (salir == false) {
+                String menu = JOptionPane.showInputDialog(jFrame,
+                        "Bienvenido A Nombre: \n 1. Insertar un punto y su arista  \n2. Buscar ruta minima \n3. Buscar ruta maxima \n4. Mostrar posibles caminos \n5.Salir");
+
+                switch (menu) {
+                    case "1":
+                        String agregado = JOptionPane.showInputDialog(jFrame, "Escriba el nombre del lugar");
+                        int i = n.length;
+                        n[i] = agregado;
+                        String destinoAgregado = JOptionPane.showInputDialog(jFrame,
+                                "Escriba la conexion que tendra el lugar:");
+                        int pesoArista = Integer
+                                .parseInt(JOptionPane.showInputDialog(jFrame, "Escriba la distancia de la conexion:"));
+                        g.agregarRuta(agregado, destinoAgregado, pesoArista);
+                        break;
+
+                    case "2":
+                        String origen = JOptionPane.showInputDialog(jFrame, "Escriba el origen:");
+                        String fin = JOptionPane.showInputDialog(jFrame, "Escriba el destino:");
+
+                        String respuesta = g.encontrarRutaMinimaDijkstra(origen, fin);
+                        JOptionPane.showMessageDialog(jFrame, respuesta);
+                        break;
+
+                    case "3":
+                        origen = JOptionPane.showInputDialog(jFrame, "Escriba el origen:");
+                        fin = JOptionPane.showInputDialog(jFrame, "Escriba el destino:");
+
+                        respuesta = g.encontrarRutaMaximaDijkstra(origen, fin);
+                        JOptionPane.showMessageDialog(jFrame, respuesta);
+                        break;
+
+                    case "4":
+
+                        break;
+
+                    case "5":
+                        JOptionPane.showMessageDialog(jFrame, g, menu, 0);
+                        salir = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        } else if (metodo.equals("2")) {
+
+            boolean salir = false;
+
+            while (salir == false) {
+                String menu = JOptionPane.showInputDialog(jFrame,
+                        "Bienvenido A Nombre: \n 1. Insertar un punto y su arista  \n2. Buscar ruta minima \n3. Verificar si todos los caminos estan conectados \n4. Mostrar si es posible alcanzar la ruta \n5.Salir");
+
+                switch (menu) {
+                    case "1":
+                        String agregado = JOptionPane.showInputDialog(jFrame, "Escriba el nombre del lugar");
+                        int i = n.length;
+                        n[i] = agregado;
+                        String destinoAgregado = JOptionPane.showInputDialog(jFrame,
+                                "Escriba la conexion que tendra el lugar:");
+                        int pesoArista = Integer
+                                .parseInt(JOptionPane.showInputDialog(jFrame, "Escriba la distancia de la conexion:"));
+
+                        k.AgregarRutaKruskal(agregado, destinoAgregado, pesoArista);
+                        break;
+
+                    case "2":
+                        // String origen = JOptionPane.showInputDialog(jFrame, "Escriba el origen:");
+                        // String fin = JOptionPane.showInputDialog(jFrame, "Escriba el destino:");
+
+                        k.Kruskals();
+                        // JOptionPane.showMessageDialog(jFrame, );
+
+                        break;
+
+                    case "3":
+                        pesoArista = Integer
+                                .parseInt(JOptionPane.showInputDialog(jFrame, "Escriba la conexion a evaluar:"));
+                        Boolean respuesta = k.allconnect(pesoArista);
+                        JOptionPane.showMessageDialog(jFrame, respuesta);
+                        break;
+
+                    case "4":
+                        // Falta añadir por nombre no posicion
+                        // k.can_reach(pesoArista, i, pesoArista);
+                        break;
+
+                    case "5":
+                        JOptionPane.showMessageDialog(jFrame, g, menu, 0);
+                        salir = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        } else {
+
+        }
 
         // String origen = "Edificio B";
         // String fin = "Cafeteria Central";
 
-        String respuesta = g.encontrarRutaMinimaDijkstra(origen, fin);
-        JOptionPane.showMessageDialog(jFrame, respuesta);
     }
 
 }
