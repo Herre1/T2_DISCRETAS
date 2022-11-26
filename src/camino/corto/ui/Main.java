@@ -166,6 +166,7 @@ public class Main {
                 switch (menu) {
                     case "1":
 
+
                         System.out.println("Escriba el nombre del lugar");
                         String agregado = lector.nextLine();
 
@@ -184,21 +185,30 @@ public class Main {
                         break;
 
                     case "2":
+
+                    String pruebaAutomatica = JOptionPane.showInputDialog("¿Como desea buscar la ruta? \n1.Caso automatico \n2.Caso manual");
+                    
+                    if (pruebaAutomatica.equals("1")){
+                        String respuesta = g.encontrarRutaMinimaDijkstra("Edificio O", "Edificio H");
+                        JOptionPane.showMessageDialog(jFrame, respuesta);
+                    }else {
                         String origen = JOptionPane.showInputDialog("Escriba el origen:");
                         String fin = JOptionPane.showInputDialog("Escriba el destino:");
 
                         System.out.println(origen);
                         System.out.println(fin);
                         String respuesta = g.encontrarRutaMinimaDijkstra(origen + "", fin + "");
-                        JOptionPane.showMessageDialog(jFrame, respuesta);
+                        JOptionPane.showMessageDialog(jFrame, respuesta);   
+                    }
+
                         break;
 
                     case "3":
-                        origen = JOptionPane.showInputDialog("Escriba el origen:");
+                        String origen = JOptionPane.showInputDialog("Escriba el origen:");
 
-                        fin = JOptionPane.showInputDialog("Escriba el destino:");
+                        String fin = JOptionPane.showInputDialog("Escriba el destino:");
 
-                        respuesta = g.encontrarRutaMaximaDijkstra(origen, fin);
+                        String respuesta = g.encontrarRutaMaximaDijkstra(origen, fin);
                         JOptionPane.showMessageDialog(jFrame, respuesta);
                         break;
 
